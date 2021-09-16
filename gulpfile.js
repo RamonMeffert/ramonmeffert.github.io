@@ -19,10 +19,10 @@ const paths = {
         dotfiles: "./src/.*"
     },
     dist: {
-        html: "./docs",
-        css: "./docs/css",
-        fonts: "./docs/fonts",
-        images: "./docs/images",
+        html: "./dist",
+        css: "./dist/css",
+        fonts: "./dist/fonts",
+        images: "./dist/images",
     }
 };
 
