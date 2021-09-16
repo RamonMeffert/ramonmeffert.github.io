@@ -1,6 +1,6 @@
 # Personal website
 
-This is the source code to my personal website, <r3n.nl>.
+This is the source code to my personal website, [r3n.nl](https://r3n.nl).
 
 ## Setup
 
