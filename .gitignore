@@ -1,2 +1,2 @@
-# macOS finder indexing file or something
-.DS_Store
+node_modules/
+dist/
