@@ -19,10 +19,10 @@ const paths = {
         dotfiles: "./src/.*"
     },
     dist: {
-        html: "./dist",
-        css: "./dist/css",
-        fonts: "./dist/fonts",
-        images: "./dist/images",
+        html: "./docs",
+        css: "./docs/css",
+        fonts: "./docs/fonts",
+        images: "./docs/images",
     }
 };
 
@@ -91,6 +91,8 @@ function serve(done) {
     done();
 }
 
+// Default export: Live development environment with HMR
 export default gulp.series(clean, fonts, dotfiles, images, css, html, serve);
+// Build: build for production
 export const build = gulp.series(clean, dotfiles, fonts, images, css, html);
 
