@@ -12,22 +12,24 @@ const server = browserSync.create();
 
 const paths = {
     source: {
-        pug: "./src/**/*.{pug,html}",
-        scss: "./src/scss/**/*.s[ca]ss",
-        fonts: "./src/fonts/*.{woff,woff2,eot,ttf,otf}",
-        images: "./src/images/*",
-        dotfiles: "./src/.*"
+        pug: "src/**/*.{pug,html}",
+        // Don't add layouts to outputs
+        pug_excludes: "!src/layouts/*.{pug,html}",
+        scss: "src/scss/**/*.s[ca]ss",
+        fonts: "src/fonts/*.{woff,woff2,eot,ttf,otf}",
+        images: "src/images/*",
+        dotfiles: "src/.*"
     },
     dist: {
-        html: "./dist",
-        css: "./dist/css",
-        fonts: "./dist/fonts",
-        images: "./dist/images",
+        html: "dist",
+        css: "dist/css",
+        fonts: "dist/fonts",
+        images: "dist/images",
     }
 };
 
 function html() {
-    return gulp.src(paths.source.pug)
+    return gulp.src([paths.source.pug, paths.source.pug_excludes])
         .pipe(pug())
         .pipe(htmlmin())
         .pipe(gulp.dest(paths.dist.html));
