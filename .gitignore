@@ -1,2 +1,4 @@
 node_modules/
 dist/
+src/fonts/*
+!src/fonts/NOT_INCLUDED_DUE_TO_LICENSING

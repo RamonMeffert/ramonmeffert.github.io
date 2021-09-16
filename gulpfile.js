@@ -12,9 +12,8 @@ const server = browserSync.create();
 
 const paths = {
     source: {
-        pug: "src/**/*.{pug,html}",
-        // Don't add layouts to outputs
-        pug_excludes: "!src/layouts/*.{pug,html}",
+        // Include all pug and html files, except those in folders starting with _
+        pug: ["src/**/*.{pug,html}", "!src/_*/", "!src/_*/**/*"],
         scss: "src/scss/**/*.s[ca]ss",
         fonts: "src/fonts/*.{woff,woff2,eot,ttf,otf}",
         images: "src/images/*",
@@ -28,13 +27,15 @@ const paths = {
     }
 };
 
+// Compile and minify html
 function html() {
-    return gulp.src([paths.source.pug, paths.source.pug_excludes])
+    return gulp.src(paths.source.pug)
         .pipe(pug())
         .pipe(htmlmin())
         .pipe(gulp.dest(paths.dist.html));
 }
 
+// Compile, prefix and minify scss
 function css() {
     const plugins = [
         autoprefixer(),
@@ -47,7 +48,7 @@ function css() {
 }
 
 /**
- * Copy fonts to 
+ * Copy fonts to dist folder.
  */
 function fonts() {
     return gulp.src(paths.source.fonts)
@@ -55,31 +56,32 @@ function fonts() {
 }
 
 /**
- * Copy images to the dist folder.
+ * Copy images to dist folder.
  */
 function images() {
     return gulp.src(paths.source.images)
         .pipe(gulp.dest(paths.dist.images));
 }
 
-/**
- * Copy dotfiles. Currently just for .nojekyll, so I can use GitHub pages to
- * host my personal website.
- */
+// Copy dotfiles. Currently just for .nojekyll, so I can use GitHub pages to
+// host my personal website.
 function dotfiles() {
     return gulp.src(paths.source.dotfiles)
         .pipe(gulp.dest(paths.dist.html));
 }
 
+// Remove the generated output.
 function clean() {
     return del(['dist']);
 }
 
+// Reload the browsersync server.
 function reload(done) {
     server.reload();
     done();
 }
 
+// Run the live development server
 function serve(done) {
     server.init({
         server: {
@@ -93,8 +95,8 @@ function serve(done) {
     done();
 }
 
-// Default export: Live development environment with HMR
+// Default export: Live development environment
 export default gulp.series(clean, fonts, dotfiles, images, css, html, serve);
-// Build: build for production
-export const build = gulp.series(clean, dotfiles, fonts, images, css, html);
+// Build: build for production. Fonts are not included here
+export const build = gulp.series(clean, dotfiles, images, css, html);
 
