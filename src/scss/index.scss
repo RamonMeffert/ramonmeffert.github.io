@@ -1,1 +1,224 @@
-@use 'base';
+@use "reset";
+@use "sass:color";
+@use "fonts";
+
+$text-color: rgb(244, 250, 255);
+$link-color: rgb(255, 217, 50);
+
+html {
+    font-size: 25px; // Set size of rem
+    height: 100%;
+}
+
+body {
+    background-color: black;
+    color: $text-color;
+    font-size: 1rem;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    height: 100%;
+}
+
+a {
+    color: $link-color;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
+
+    &[href^=https]::after {
+        content: "";
+        display: inline-block;
+        width: .75em;
+        height: .75em;
+        vertical-align: -8%;
+        color: inherit;
+        background-size: .75em;
+        background-position-y: bottom;
+        margin-left: .2ex;
+        background-image: url(/images/external-link.svg);
+    }
+}
+
+.container {
+    padding: 1rem 1.3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    row-gap: 1.3rem;
+    min-height: 100%;
+    box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6, .toc-title, a.title {
+    font-family: 'Silka', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+header a.title {
+    font-size: 3rem;
+    color: $text-color;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: .6rem;
+    color: $text-color;
+    text-decoration: none;
+}
+
+h2 {
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+    margin: .8rem 0 .3rem;
+}
+
+h3 {
+    font-size: 1.3rem;
+    line-height: 1.3rem;
+    margin: 1rem 0 .3rem;
+}
+
+h4 {
+    font-size: 1.1rem;
+    line-height: 1.1rem;
+    margin: 1.2rem 0 .3rem;
+}
+
+h5 {
+    font-size: 1rem;
+    line-height: 1rem;
+    margin: 1rem 0 .3rem;
+    font-weight: normal;
+    font-style: italic;
+}
+
+main {
+    line-height: 1.3rem;
+    position: relative;
+}
+
+div.columns {
+    display: flex;
+
+    & > *:first-child {
+        width: calc(30% - 1rem);
+        margin-left: 1rem;
+        order: 2;
+    }
+
+    & > *:last-child {
+        width: 70%;
+        order: 1;
+    }
+}
+
+nav.toc {
+    position: sticky;
+    top: 1rem;
+    font-size: .8rem;
+    border-left: 2px solid $text-color;
+    padding-left: 1rem;
+    margin-top: 1rem;
+
+    .toc-title {
+        font-weight: bold;
+        font-size: 1rem;
+    }
+
+    ul ul {
+        margin-left: 1rem;
+        font-size: 80%;
+        line-height: 1.5em;
+    }
+}
+
+section {
+    &:not(:last-child) {
+        margin-bottom: 1.3rem;
+    }
+
+    & > *:not(:last-child) {
+        margin-bottom: .7rem;
+    }
+
+    .activity {
+        p:not(:first-child) {
+            font-size: .9rem;
+            margin-top: .2rem;
+            line-height: 1.1rem;
+            color: $text-color;
+        }
+    }
+
+    .internal-link::before {
+        content: "";
+        display: inline-block;
+        width: .8em;
+        height: .8em;
+        vertical-align: -8%;
+        color: inherit;
+        background-size: .8em;
+        background-position-y: bottom;
+        margin-right: .5ex;
+        background-image: url(/images/arrow-right.svg);
+    }
+
+    .links {
+        list-style: none;
+    }
+
+    ul.inline {
+        display: flex;
+        flex-wrap: wrap;
+        list-style: none;
+
+        li {
+            display: flex;
+            border-bottom: 2px solid $link-color;
+            font-size: .9rem;
+            margin: 0 .4ex .8ex 0; 
+            padding-left: .2rem;
+            padding-right: .2rem;
+            
+            &.typed { padding-left: 0; }
+
+            .type {
+                font-size: .7rem;
+                color: black;
+                padding: 0 .2rem;
+                border-color: $link-color;
+                border-width: 2px 2px 0 2px;
+                border-style: solid;
+                color: $link-color;
+                margin-right: .2rem;
+            }
+        }
+    }
+}
+
+footer {
+    font-size: 50%;
+    line-height: .8rem;
+    grid-row-start: 2;
+    grid-row-end: 3;
+}
+
+@media screen and (max-width: 600px) {
+    // Make header a bit smaller for smaller screens
+    header a.title {
+        font-size: 2.5rem;
+    }
+
+    // Adjust TOC on cv
+    div.columns {
+        display: block;
+
+        & > *:first-child {
+            width: 100%;
+            margin-left: 0;
+        }
+
+        & > *:last-child {
+            width: 100%;
+        }
+    }
+}

@@ -1,95 +1,125 @@
 extends ../_layouts/layout.pug
 
+mixin typedListItem(type)
+    li.typed
+        span.type= type
+        block
+
 block content
-    h2 Curriculum Vitae
-    h3 Professional work experience
-    div.occupation
-        em Software Engineer
-        p 
-            a(href="https://pynter.nl" target="_blank") Pynter
-            |  (2018–present)
-    section
-        h3 Education
-        div.occupation
-            em Master's Degree, Artificial Intelligence
-            p.comment Specialization: Multi-Agent Systems
-            p 
-                a(href="https://www.rug.nl/masters/artificial-intelligence/" target="_blank") University of Groningen
-                |  (2021–present)
-        div.occupation
-            em Bachelor's Degree, Artificial Intelligence
-            p 
-                a(href="https://www.rug.nl/bachelors/artificial-intelligence/" target="_blank") University of Groningen
-                |  (2014, 2017–2021)
-        div.occupation
-            em Pre-university Education (VWO)
-            p.comment Specialized component: Science and Health
-            p 
-                a(href="https://www.government.nl/topics/secondary-education/different-types-of-secondary-education/senior-general-secondary-education-havo-and-pre-university-education-vwo" target="_blank") Marnix College Ede
-                |  (2007–2014)
-    section
-        h3 Certificates
-        div.occupation
-            em M14 English Language and Literature
-            p 
-                a(href="https://www.ibo.org/programmes/diploma-programme/curriculum/language-and-literature/language-a-language-and-literature-slhl/" target="_blank") International Baccalaureate
-                |  (2012–2014)
-    section
-        h3 Skills
-        p Fluent in Dutch and English. Can understand basic German and French as well.
-        h4 Programming
-        h5 Languages
-        h6.label Skilled
-        ul.inline
-            li C#
-            li SQL
-            li JS/TS
-            li HTML
-            li (S)CSS
-            li Python
-            li Elm
-            li LaTeX
-            li PowerShell
-        h6.label Some experience
-        ul.inline
-            li C
-            li C++
-            li Java
-            li Prolog
-            li Haskell
-        h6.label Want to learn/Interested in
-        ul.inline
-            li Go
-            li Rust
-            li A language on the BEAM VM
-            li F#
-        h5 Frameworks, libraries and tools
-        ul.dashed
-            li ASP.NET
-                p.comment Framework/Core
-            li Entity Framework Core
-                p.comment ORM
-            li NodeJS front end tooling 
-                p.comment Webpack/Snowpack/Gulp/&hellip;
-            li Azure DevOps
-                p.comment Version control, CI/CD
-            li GitHub
-                p.comment Version control, CI/CD
-            li Git
-            li Adobe Suite
-                p.comment In order of most to least experience: Photoshop, InDesign, Illustrator, Premiere Pro
-    section
-        h3 Volunteer work
-        div.occupation
-            em Financial Commissioner of the Board
-            p 
-                a(href="https://www.cleopatra-groningen.nl/over/bestuur/bestuur-kairos-20162017" target="_blank") Cleopatra A.S.G.
-                |  (2016–2017)
-        div.occupation
-            em Various committees
-            p.comment 
-                | Including the financial audit committee, board selection committee and IT committee (among others). 
-                | Functions included chair, secretary, designer and general board member.
-            p 
-                a(href="https://www.cleopatra-groningen.nl/over/bestuur/bestuur-kairos-20162017" target="_blank") Cleopatra A.S.G.
-                |  (between 2014–2020)
+    div.columns
+        div
+            nav.toc
+                span.toc-title Contents
+                ul
+                    li
+                        a(href="#work") Professional experience
+                    li
+                        a(href="#education") Education
+                    li
+                        a(href="#certificates") Certificates
+                    li
+                        a(href="#skills") Skills
+                        ul 
+                            li
+                                a(href="#programming-languages") Programming languages
+                            li
+                                a(href="#frameworks") Frameworks, libraries and tools
+                            li
+                                a(href="#misc") Miscellaneous
+                    li
+                        a(href="#volunteering") Volunteer work
+        div
+            h2 Curriculum Vitae
+            p I am currently in the last year of my Master's degree in Artificial Intelligence at the University of Groningen. 
+                | I also work part-time as a backend software engineer at Pynter, a company providing e-learning software aimed 
+                | at the healthcare industry.
+            section
+                h3#work Professional experience
+                div.activity
+                    p 
+                        a(href="https://pynter.nl" target="_blank") Pynter E-Learning
+                        |  (2018—)
+                    p Software Engineer
+            section
+                h3#education Education
+                div.activity
+                    p 
+                        a(href="https://www.rug.nl/masters/artificial-intelligence/" target="_blank") University of Groningen
+                        |  (2021—)
+                    p Master's Degree, Artificial Intelligence
+                    p Specialization: Multi-Agent Systems
+                div.activity
+                    p 
+                        a(href="https://www.rug.nl/bachelors/artificial-intelligence/" target="_blank") University of Groningen
+                        |  (2021)
+                    p Bachelor's Degree, Artificial Intelligence
+                div.activity
+                    p 
+                        a(href="https://www.government.nl/topics/secondary-education/different-types-of-secondary-education/senior-general-secondary-education-havo-and-pre-university-education-vwo" target="_blank") Marnix College Ede
+                        |  (2014)
+                    p Pre-university Education (VWO)
+                    p Specialized component: Science and Health
+            section
+                h3#certificates Certificates
+                div.activity
+                    p 
+                        a(href="https://www.ibo.org/programmes/diploma-programme/curriculum/language-and-literature/language-a-language-and-literature-slhl/" target="_blank") International Baccalaureate
+                        |  (2014)
+                    p M14 English Language and Literature
+            section
+                h3#skills Skills
+                h4#programming-languages Programming languages
+                h5.label Experienced
+                ul.inline
+                    li C#
+                    li (T-)SQL
+                    li Javascript
+                    li Typescript
+                    li HTML
+                    li (S)CSS
+                    li Python
+                    li Elm
+                    li LaTeX
+                h5.label Some experience
+                ul.inline
+                    li C
+                    li C++
+                    li Java
+                    li PowerShell
+                    li Prolog
+                    li Haskell
+                h4#frameworks Frameworks, libraries and tools
+                ul.inline
+                    +typedListItem('C#') ASP.NET Core
+                    +typedListItem('C#') Entity Framework Core
+                    +typedListItem('JS') WebPack
+                    +typedListItem('JS') SnowPack
+                    +typedListItem('JS') Gulp
+                    +typedListItem('JS') Pug
+                    +typedListItem('CI/CD') Azure DevOps
+                    +typedListItem('CI/CD') GitHub
+                    +typedListItem('VC') Git
+                    +typedListItem('IDE') Visual Studio
+                    +typedListItem('IDE') Visual Studio Code
+                    +typedListItem('Ps') Adobe Photoshop
+                    +typedListItem('Ai') Adobe Illustrator
+                    +typedListItem('Id') Adobe InDesign
+                h4#misc Miscellaneous
+                p I speak Dutch (native) and English (fluent). I have a driver's license (AM/B) and have a certificate  
+                    | for social safety and hygiene (sociale veiligheid en hygiëne, SVH) and used to have one for 
+                    | in-company emergency response (bedrijfshulpverlening, BHV), but this has expired.
+            section
+                h3#volunteering Volunteer work
+                div.activity
+                    p 
+                        a(href="https://www.cleopatra-groningen.nl/over/bestuur/bestuur-kairos-20162017" target="_blank") Cleopatra A.S.G.
+                        |  (2016–2017)
+                    p Financial Commissioner of the Board
+                div.activity
+                    p 
+                        a(href="https://www.cleopatra-groningen.nl/over/word-actief" target="_blank") Cleopatra A.S.G.
+                        |  (2014–2020)
+                    p 
+                        | Various committees, including the financial audit committee, board selection committee and IT 
+                        | services committee. Positions included committee chair, secretary, designer and general board 
+                        | member.

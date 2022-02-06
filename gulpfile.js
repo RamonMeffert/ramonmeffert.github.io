@@ -17,7 +17,7 @@ const paths = {
         scss: "src/scss/**/*.s[ca]ss",
         fonts: "src/fonts/*.{woff,woff2,eot,ttf,otf}",
         images: "src/images/*",
-        dotfiles: "src/.*"
+        misc: ["src/.*", "src/*.png", "src/*.xml", "src/*.webmanifest", "src/*.svg", "src/*.ico"]
     },
     dist: {
         html: "dist",
@@ -63,10 +63,9 @@ function images() {
         .pipe(gulp.dest(paths.dist.images));
 }
 
-// Copy dotfiles. Currently just for .nojekyll, so I can use GitHub pages to
-// host my personal website.
-function dotfiles() {
-    return gulp.src(paths.source.dotfiles)
+// Copy misc files. Notably .nojekyll for GH pages and favicon files.
+function misc() {
+    return gulp.src(paths.source.misc)
         .pipe(gulp.dest(paths.dist.html));
 }
 
@@ -88,7 +87,7 @@ function serve(done) {
             baseDir: './dist'
         }
     });
-    gulp.watch(paths.source.pug, gulp.series(html, reload));
+    gulp.watch("src/**/*.{pug,html}", gulp.series(html, reload));
     gulp.watch(paths.source.scss, gulp.series(css, reload));
     gulp.watch(paths.source.fonts, gulp.series(fonts, reload));
     gulp.watch(paths.source.images, gulp.series(images, reload));
@@ -96,7 +95,7 @@ function serve(done) {
 }
 
 // Default export: Live development environment
-export default gulp.series(clean, fonts, dotfiles, images, css, html, serve);
+export default gulp.series(clean, fonts, misc, images, css, html, serve);
 // Build: build for production. Fonts are not included here
-export const build = gulp.series(clean, dotfiles, images, css, html);
+export const build = gulp.series(clean, misc, images, css, html);
 
