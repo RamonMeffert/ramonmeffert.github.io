@@ -31,11 +31,11 @@ a {
         display: inline-block;
         width: .75em;
         height: .75em;
-        vertical-align: -8%;
+        vertical-align: -4.7%;
         color: inherit;
-        background-size: .75em;
+        background-size: .735em;
         background-position-y: bottom;
-        margin-left: .2ex;
+        margin-left: .5ex;
         background-image: url(/images/external-link.svg);
     }
 }
@@ -65,25 +65,25 @@ header a.title {
     text-decoration: none;
 }
 
-h2 {
+h1 {
     font-size: 1.5rem;
     line-height: 1.5rem;
     margin: .8rem 0 .3rem;
 }
 
-h3 {
+h2 {
     font-size: 1.3rem;
     line-height: 1.3rem;
     margin: 1rem 0 .3rem;
 }
 
-h4 {
+h3 {
     font-size: 1.1rem;
     line-height: 1.1rem;
     margin: 1.2rem 0 .3rem;
 }
 
-h5 {
+h4 {
     font-size: 1rem;
     line-height: 1rem;
     margin: 1rem 0 .3rem;
@@ -149,17 +149,23 @@ section {
         }
     }
 
-    .internal-link::before {
-        content: "";
-        display: inline-block;
-        width: .8em;
-        height: .8em;
-        vertical-align: -8%;
-        color: inherit;
-        background-size: .8em;
-        background-position-y: bottom;
-        margin-right: .5ex;
-        background-image: url(/images/arrow-right.svg);
+    #internal-links {
+        .internal-link {
+            display: block;
+        }
+
+        .internal-link::after {
+            content: "";
+            display: inline-block;
+            width: .4em;
+            height: .8em;
+            vertical-align: -14%;
+            background-size: .9em;
+            background-position-y: bottom;
+            background-position-x: 50%;
+            margin-left: .5ex;
+            background-image: url(/images/chevron-right.svg);
+        }
     }
 
     .links {
@@ -192,6 +198,18 @@ section {
                 margin-right: .2rem;
             }
         }
+    }
+}
+
+#projects {
+    display: flex;
+    gap: 1rem 1.3rem;
+    flex-wrap: wrap;
+
+    article.project {
+        border-bottom: 2px solid $link-color;
+        max-width: calc(50% - .65rem);
+        min-width: calc(375px - 2.6rem);
     }
 }
 

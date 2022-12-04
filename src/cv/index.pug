@@ -29,19 +29,19 @@ block content
                     li
                         a(href="#volunteering") Volunteer work
         div
-            h2 Curriculum Vitae
+            h1 Curriculum Vitae
             p I am currently in the last year of my Master's degree in Artificial Intelligence at the University of Groningen. 
                 | I also work part-time as a backend software engineer at Pynter, a company providing e-learning software aimed 
                 | at the healthcare industry.
             section
-                h3#work Professional experience
+                h2#work Professional experience
                 div.activity
                     p 
-                        a(href="https://pynter.nl" target="_blank") Pynter E-Learning
+                        a(href="https://pynter.nl" target="_blank") Pynter Blended Learning
                         |  (2018—)
                     p Software Engineer
             section
-                h3#education Education
+                h2#education Education
                 div.activity
                     p 
                         a(href="https://www.rug.nl/masters/artificial-intelligence/" target="_blank") University of Groningen
@@ -60,56 +60,64 @@ block content
                     p Pre-university Education (VWO)
                     p Specialized component: Science and Health
             section
-                h3#certificates Certificates
+                h2#certificates Certificates
                 div.activity
                     p 
                         a(href="https://www.ibo.org/programmes/diploma-programme/curriculum/language-and-literature/language-a-language-and-literature-slhl/" target="_blank") International Baccalaureate
                         |  (2014)
                     p M14 English Language and Literature
             section
-                h3#skills Skills
-                h4#programming-languages Programming languages
-                h5.label Experienced
+                h2#skills Skills
+                h3#programming-languages Programming languages
+                h4.label Experienced
+                p These are languages I either use very regularly or I have a lot of experience working in.
                 ul.inline
                     li C#
-                    li (T-)SQL
-                    li Javascript
-                    li Typescript
+                    li CSS (and Sass)
                     li HTML
-                    li (S)CSS
-                    li Python
-                    li Elm
+                    li Javascript
                     li LaTeX
-                h5.label Some experience
+                    li Python
+                    li SQL
+                    li Typescript
+                h4.label Some experience
+                p These are languages I have at some point written code in. Some I used during my studies, some are 
+                    | auxiliary languages (e.g. Bash) and some I have tried out just for fun.
                 ul.inline
                     li C
                     li C++
+                    li Elm
+                    li Haskell
                     li Java
                     li PowerShell
+                    li Cobol
                     li Prolog
-                    li Haskell
-                h4#frameworks Frameworks, libraries and tools
+                    li Bash
+                h3#frameworks Frameworks, libraries and tools
                 ul.inline
+                    +typedListItem('C#') .NET
                     +typedListItem('C#') ASP.NET Core
                     +typedListItem('C#') Entity Framework Core
+                    +typedListItem('JS') Node.js
+                    +typedListItem('JS') Vue.js
                     +typedListItem('JS') WebPack
                     +typedListItem('JS') SnowPack
                     +typedListItem('JS') Gulp
                     +typedListItem('JS') Pug
                     +typedListItem('CI/CD') Azure DevOps
                     +typedListItem('CI/CD') GitHub
+                    +typedListItem('CD') Docker
                     +typedListItem('VC') Git
                     +typedListItem('IDE') Visual Studio
                     +typedListItem('IDE') Visual Studio Code
                     +typedListItem('Ps') Adobe Photoshop
                     +typedListItem('Ai') Adobe Illustrator
                     +typedListItem('Id') Adobe InDesign
-                h4#misc Miscellaneous
+                h3#misc Miscellaneous
                 p I speak Dutch (native) and English (fluent). I have a driver's license (AM/B) and have a certificate  
-                    | for social safety and hygiene (sociale veiligheid en hygiëne, SVH) and used to have one for 
-                    | in-company emergency response (bedrijfshulpverlening, BHV), but this has expired.
+                    | for social safety and hygiene (sociale veiligheid en hygiëne, SVH).
             section
-                h3#volunteering Volunteer work
+                h2#volunteering Volunteer work
                 div.activity
                     p 
                         a(href="https://www.cleopatra-groningen.nl/over/bestuur/bestuur-kairos-20162017" target="_blank") Cleopatra A.S.G.
