@@ -1,0 +1,81 @@
+:root {
+    color-scheme: light dark;
+
+    --l-tx: black;
+    --d-tx: white;
+
+    --l-bg: white;
+    --d-bg: black;
+
+    --l-ac: pink;
+    --d-ac: pink;
+}
+
+* {
+    font-size: 14px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: light-dark(var(--l-tx), var(--d-tx));
+    background-color: light-dark(var(--l-bg), var(--d-bg));
+    letter-spacing: .3px;
+    line-height: 1em;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    padding: 1rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: light-dark(var(--l-ac), var(--d-ac));
+    font-size: 1.2rem;
+    font-weight: normal;
+    margin-bottom: 1rem;
+}
+
+section {
+    margin-bottom: 1rem;
+}
+
+ul {
+    list-style: decimal-leading-zero;
+    list-style-position: inside;
+    margin-block: 1rem;
+}
+
+ol {
+    list-style: none;
+    margin-block: 1rem;
+}
+
+li {
+    margin-block: .5rem;
+    margin-inline: 0;
+}
+
+time {
+    font-variant-numeric: tabular-nums;
+}
+
+.nevenschikking {
+    display: flex;
+    gap: 1rem;
+
+    img {
+        height: 3.2rem;
+    }
+}
+
+.chaotisch {
+    display: flex;
+    list-style: none;
+    max-width: 16rem;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+
+    li {
+        white-space: nowrap;
+        line-height: 1rem;
+        margin: 0;
+    }
+}
